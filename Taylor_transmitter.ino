@@ -134,131 +134,107 @@ void loop()
     } else {
     switch_position10 = "L";      
     }
-
+     
+        char tempChar[7] = "";
+        const char *msg = (tempChar);
+        String str;
+        str = "";
+    
   // don't switch anything the first time thru, since we're just getting/saving the values
   
     if (firstTime != true) {
       
 
         if (switch_position1 != switch_position1_previous){
-            char *msg = "RRSW1L";
+            str = "~RR1L~";
             if (switch_position1 == HIGH){
-               *msg = "RRSW1H";
+               str = "~RR1R~";
             }
-    
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position2 != switch_position2_previous){
-            char *msg = "RRSW2L";
+            str = "~RR2L~";
             if (switch_position2 == HIGH){
-               *msg = "RRSW2H";
+               str = "~RR1R~";
             }
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position3 != switch_position3_previous){
-           char *msg = "RRSW3L";
+           str = "~RR3L~";
             if (switch_position3 == HIGH){
-               *msg = "RRSW3H";
+               str = "~RR3R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position4 != switch_position4_previous){
-           char *msg = "RRSW4L";
+           str = "~RR4L~";
             if (switch_position4 == HIGH){
-               *msg = "RRSW4H";
+               str = "~RR4R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position5 != switch_position5_previous){
-           char *msg = "RRSW5L";
+           str = "~RR5L~";
             if (switch_position5 == HIGH){
-               *msg = "RRSW5H";
+               str = "~RR5R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
         if (switch_position6 != switch_position6_previous){
-           char *msg = "RRSW6L";
+           str = "~RR6L~";
             if (switch_position6 == HIGH){
-               *msg = "RRSW6H";
+               str = "~RR6R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
          }
     
     
         if (switch_position7 != switch_position7_previous){
-           char *msg = "RRSW7L";
+           str = "~RR7L~";
             if (switch_position7 == HIGH){
-               *msg = "RRSW7H";
+               str = "~RR7R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position8 != switch_position8_previous){
-           char *msg = "RRSW8L";
+           str = "~RR8L~";
             if (switch_position8 == HIGH){
-               *msg = "RRSW8H";
+               str = "~RR8R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
-    
           }
     
     
         if (switch_position9 != switch_position9_previous){
-           char *msg = "RRSW9L";
+           str = "~RR9L~";
             if (switch_position9 == HIGH){
-               *msg = "RRSW9H";
+               str = "~RR9R~";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
     
     
         if (switch_position10 != switch_position10_previous){
-           char *msg = "RRSW10L";
+            str = "";
             if (switch_position10 == HIGH){
-               *msg = "RRSW10H";
+               str = "";
             }
-     
-        driver.send((uint8_t *)msg, strlen(msg));
-        driver.waitPacketSent();
-        delay(200);      
           }
+
+        if (str != ""){
+            str.toCharArray(tempChar,7);
+            Serial.println(tempChar);
+        
+            driver.send((uint8_t *)msg, strlen(msg));
+            driver.waitPacketSent();          
+        }
+        delay(200);      
+
     }
 
+        
        firstTime = false;
        delay(100);
 
