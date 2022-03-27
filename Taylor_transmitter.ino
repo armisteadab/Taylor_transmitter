@@ -20,33 +20,33 @@ const int switch7 = 32;
 const int switch8 = 33;
 const int switch9 = 34;
 const int switch10 = 35;
-char switch_position1 = "L";
-char switch_position1_previous = "L";
-char switch_position2 = "L";
-char switch_position2_previous = "L";
-char switch_position3 = "L";
-char switch_position3_previous = "L";
-char switch_position4 = "L";
-char switch_position4_previous = "L";
-char switch_position5 = "L";
-char switch_position5_previous = "L";
-char switch_position6 = "L";
-char switch_position6_previous = "L";
-char switch_position7 = "L";
-char switch_position7_previous = "L";
-char switch_position8 = "L";
-char switch_position8_previous = "L";
-char switch_position9 = "L";
-char switch_position9_previous = "L";
-char switch_position10 = "L";
-char switch_position10_previous = "L";
+int switch_position1 = 0;
+int switch_position1_previous = 0;
+int switch_position2 = 0;
+int switch_position2_previous = 0;
+int switch_position3 = 0;
+int switch_position3_previous = 0;
+int switch_position4 = 0;
+int switch_position4_previous = 0;
+int switch_position5 = 0;
+int switch_position5_previous = 0;
+int switch_position6 = 0;
+int switch_position6_previous = 0;
+int switch_position7 = 0;
+int switch_position7_previous = 0;
+int switch_position8 = 0;
+int switch_position8_previous = 0;
+int switch_position9 = 0;
+int switch_position9_previous = 0;
+int switch_position10 = 0;
+int switch_position10_previous = 0;
 bool firstTime = true;
 
 void setup()
 {
 #ifdef RH_HAVE_SERIAL
     Serial.begin(9600);	  // Debugging only
-    Serial.println("begin testing");
+    Serial.println("begin testing REVISION 1.0");
 #endif
     if (!driver.init())
 #ifdef RH_HAVE_SERIAL
@@ -84,55 +84,55 @@ void loop()
 
 
   if (digitalRead(switch1) == HIGH) {
-    switch_position1 = "H";
+    switch_position1 = 1;
     } else {
-    switch_position1 = "L";      
+    switch_position1 = 0;      
     }
     
   if (digitalRead(switch2) == HIGH) {
-    switch_position2 = "H";
+    switch_position2 = 1;
     } else {
-    switch_position2 = "L";      
+    switch_position2 = 0;      
     }
   if (digitalRead(switch3) == HIGH) {
-    switch_position3 = "H";
+    switch_position3 = 1;
     } else {
-    switch_position3 = "L";      
+    switch_position3 = 0;      
     }
   if (digitalRead(switch4) == HIGH) {
-    switch_position4 = "H";
+    switch_position4 = 1;
     } else {
-    switch_position4 = "L";      
+    switch_position4 = 0;      
     }
   if (digitalRead(switch5) == HIGH) {
-    switch_position5 = "H";
+    switch_position5 = 1;
     } else {
-    switch_position5 = "L";      
+    switch_position5 = 0;      
     }
   if (digitalRead(switch6) == HIGH) {
-    switch_position6 = "H";
+    switch_position6 = 1;
     } else {
-    switch_position6 = "L";      
+    switch_position6 = 0;      
     }
   if (digitalRead(switch7) == HIGH) {
-    switch_position7 = "H";
+    switch_position7 = 1;
     } else {
-    switch_position7 = "L";      
+    switch_position7 = 0;      
     }
   if (digitalRead(switch8) == HIGH) {
-    switch_position8 = "H";
+    switch_position8 = 1;
     } else {
-    switch_position8 = "L";      
+    switch_position8 = 0;      
     }
   if (digitalRead(switch9) == HIGH) {
-    switch_position9 = "H";
+    switch_position9 = 1;
     } else {
-    switch_position9 = "L";      
+    switch_position9 = 0;      
     }
   if (digitalRead(switch10) == HIGH) {
-    switch_position10 = "H";
+    switch_position10 = 1;
     } else {
-    switch_position10 = "L";      
+    switch_position10 = 0;      
     }
      
         char tempChar[7] = "";
@@ -147,7 +147,7 @@ void loop()
 
         if (switch_position1 != switch_position1_previous){
             str = "~RR1L~";
-            if (switch_position1 == HIGH){
+            if (switch_position1== 1){
                str = "~RR1R~";
             }
           }
@@ -155,15 +155,15 @@ void loop()
     
         if (switch_position2 != switch_position2_previous){
             str = "~RR2L~";
-            if (switch_position2 == HIGH){
-               str = "~RR1R~";
+            if (switch_position2== 1){
+               str = "~RR2R~";
             }
           }
     
     
         if (switch_position3 != switch_position3_previous){
            str = "~RR3L~";
-            if (switch_position3 == HIGH){
+            if (switch_position3== 1){
                str = "~RR3R~";
             }
           }
@@ -171,7 +171,7 @@ void loop()
     
         if (switch_position4 != switch_position4_previous){
            str = "~RR4L~";
-            if (switch_position4 == HIGH){
+            if (switch_position4== 1){
                str = "~RR4R~";
             }
           }
@@ -179,14 +179,14 @@ void loop()
     
         if (switch_position5 != switch_position5_previous){
            str = "~RR5L~";
-            if (switch_position5 == HIGH){
+            if (switch_position5== 1){
                str = "~RR5R~";
             }
           }
     
         if (switch_position6 != switch_position6_previous){
            str = "~RR6L~";
-            if (switch_position6 == HIGH){
+            if (switch_position6== 1){
                str = "~RR6R~";
             }
          }
@@ -194,7 +194,7 @@ void loop()
     
         if (switch_position7 != switch_position7_previous){
            str = "~RR7L~";
-            if (switch_position7 == HIGH){
+            if (switch_position7== 1){
                str = "~RR7R~";
             }
           }
@@ -202,7 +202,7 @@ void loop()
     
         if (switch_position8 != switch_position8_previous){
            str = "~RR8L~";
-            if (switch_position8 == HIGH){
+            if (switch_position8== 1){
                str = "~RR8R~";
             }
           }
@@ -217,9 +217,9 @@ void loop()
     
     
         if (switch_position10 != switch_position10_previous){
-            str = "";
-            if (switch_position10 == HIGH){
-               str = "";
+            str = "~RRXL~";
+            if (switch_position10== 1){
+              str = "~RRXR~";
             }
           }
 
